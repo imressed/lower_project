@@ -1,0 +1,22 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% from "_helpers.html" import render_register_field, render_checkbox_field %}
+
+{% block content %}
+    <div class="col-md-6 col-md-offset-3 top-margin">
+        <form method=post action="/register" class="form-horizontal">
+            {{ form.hidden_tag() }}
+
+            {{ render_register_field(form.username, "Enter your nick") }}
+            {{ render_register_field(form.email, "example@google.com") }}
+            {{ render_register_field(form.password, "Something secure") }}
+            {{ render_register_field(form.confirm, "Repeat pass") }}
+            {{ render_checkbox_field(form.accept_tos) }}
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type=submit value=Register class="btn btn-default">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

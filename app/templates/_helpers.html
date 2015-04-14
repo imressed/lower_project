@@ -1,0 +1,65 @@
+{% macro render_field(field) %}
+  <div class="form-group">
+  <label for="inputEmail3" class="col-sm-4 control-label">Enter your question here: </label>
+    <div class="col-sm-6">
+  {{ field(**kwargs)|safe }}
+    </div>
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro render_answer_field(field) %}
+  <div class="form-group">
+  <label for="inputEmail3" class="col-sm-3 control-label">Enter your answer here: </label>
+    <div class="col-sm-7">
+  {{ field(**kwargs)|safe }}
+    </div>
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro render_register_field(field,plhldr) %}
+  <div class="form-group">
+  <label for="inputEmail3" class="col-sm-2 control-label">{{ field.label }}</label>
+    <div class="col-sm-10">
+      {{ field(class="form-control",placeholder=plhldr,**kwargs)|safe }}
+    </div>
+
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </div>
+{% endmacro %}
+
+{% macro render_checkbox_field(field) %}
+  <div class="form-group">
+  <label for="inputEmail3" class="col-sm-2 control-label">{{ field.label }}</label>
+    <div class="col-sm-10">
+      {{ field(**kwargs)|safe }}
+    </div>
+
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </div>
+{% endmacro %}

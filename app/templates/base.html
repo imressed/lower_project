@@ -1,0 +1,48 @@
+<html>
+  <head>
+    {% block scripts %}
+
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% endblock %}
+
+    <link rel="shortcut icon" href="../static/img/fav.png" type="image/png">
+    <title>Justice</title>
+
+  </head>
+  <body>
+    <div class="row text-center"><img height="300" src="{{ url_for('static', filename='img/lady.png') }}"></div>
+    <nav class='text-center awesome-nav both-margin-30'>
+      <a href="/">Home</a> |
+      <a href="{{ url_for('question') }}">Ask question</a> |
+      {% if g.user['role'] == 'admin' %}
+        <a href="{{ url_for('answer_list') }}">Answer q</a> |
+      {% endif %}
+      {% if g.user.is_authenticated() %}
+        You login as: {{ g.user.username }} |
+        <a href="{{ url_for('logout') }}">Log out</a> |
+      {% else %}
+        <a href="{{ url_for('login') }}">Log in</a> |
+      {% endif %}
+     {% if g.user.is_authenticated() == False %}
+        <a href="{{ url_for('register') }}">Register</a> |
+      {% endif %}
+        <a href="{{ url_for('about') }}">About</a>
+    </nav>
+    <div class="row text-center big-font">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible col-md-8 col-md-offset-2" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+                {{ message }} </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    </div>
+    {% block content %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-center">Who we are?</h1>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <p class="big-font">If you have any propositions or ideas how to make our project better, please contact us! <a href="mailto:shtagerok@gmail.com">shtagerok@gmail.com</a></p>
+        </div>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+        function initialize() {
+          var myLatlng = new google.maps.LatLng(50.005098060298835,36.2475711107254);
+          var mapOptions = {
+            zoom: 17,
+            center: myLatlng,
+            zoomControl: false,
+            scaleControl: false,
+            scrollwheel: false,
+            disableDoubleClickZoom: true
+          }
+          var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+          var marker = new google.maps.Marker({
+              position: myLatlng,
+              map: map,
+              title: 'Hello World!'
+          });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+
+    <div id="map-canvas" style="margin-top: 100px"></div>
+{% endblock %}

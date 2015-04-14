@@ -1,0 +1,28 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+
+    <div class="col-md-12">
+        <h1 class="text-center">Unanswered questions</h1>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        {% for post in posts %}
+            {% if post.answer == None %}
+                <a href='answer/{{ post.id }}'><div><p>{{ post.user_name }} asked: <b>{{ post.question }}</b></p></div></a>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="col-md-12">
+        <h2 class="text-center">All questions</h2>
+    </div>
+
+    <div class="col-md-6 col-md-offset-3">
+        {% for post in posts %}
+            <a href='answer/{{ post.id }}'><div><p>{{ post.user_name }} asked: <b>{{ post.question }}</b></p></div></a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

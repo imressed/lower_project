@@ -1,0 +1,26 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-center">Before asking question, see recently answered questions</h1>
+    <div class="panel-group text-center col-md-8 col-md-offset-2" id="accordion" role="tablist" aria-multiselectable="true">
+    {% for post in posts %}
+        {% if post.answer != None %}
+            <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading{{ post.id }}">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ post.id }}" aria-expanded="true" aria-controls="collapse{{ post.id }}">
+                  <div><p><strong>{{ post.user_name }}</strong> asked: <b>{{ post.question }}</b></p></div>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse{{ post.id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ post.id }}">
+              <div class="panel-body">
+               <div><p>Answer: {{ post.answer }} </p></div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}

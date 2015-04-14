@@ -1,0 +1,21 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+{% from "_helpers.html" import render_field %}
+
+{% block content %}
+  <h1 class="text-center">Ask question</h1>
+  <div class="col-md-6 col-md-offset-3 top-margin">
+      <form action="" method="post" name="question" class="form-horizontal">
+          {{ form.hidden_tag() }}
+
+          {{ render_field( form.question,placeholder="Enter your question here...", class="form-control" ) }}
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type=submit value=Ask! class="btn btn-default">
+            </div>
+        </div>
+
+      </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+.awesome-nav{
+    font-size: 1.8rem;
+}
+.big-font{
+    font-size: 1.8rem;
+}
+.top-margin{
+    margin-top: 30px;
+}
+.top-margin-10{
+    margin-top: 10px;
+}
+.both-margin-30{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#map-canvas {
+    height: 30%;
+    margin: 0px;
+    padding: 0px;
+}

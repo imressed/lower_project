@@ -1,0 +1,20 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% from "_helpers.html" import render_register_field %}
+
+{% block content %}
+    <div class="col-md-6 col-md-offset-3 top-margin">
+        <form method=post action="/login" class="form-horizontal">
+            {{ form.hidden_tag() }}
+
+            {{ render_register_field(form.username, "Anonimus") }}
+            {{ render_register_field(form.password, "Trytoforget") }}
+
+            <div class="form-group top-margin">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type=submit value=Login class="btn btn-default">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
