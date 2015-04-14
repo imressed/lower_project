@@ -13,6 +13,5 @@ HOST='127.0.0.1'
 
 OPENID_PROVIDERS = [
     {'name': 'Google', 'url': 'https://www.google.com/accounts/o8/id'},
-
 ]
 
